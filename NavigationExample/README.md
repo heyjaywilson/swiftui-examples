@@ -90,6 +90,40 @@ Here is what the preview will look like
 
 ![NavigationView changed with the above changes](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/NavigationView-2.png?raw=true)
 
-# 3. Links
+# 3. Add a `NavigationLink`
 
-# 4. Add 3 `NavigationLink`
+The `Text` needs to be inside a `NavigationLink` in order to navigate to a different view. We will use `NavigationLink(destination: Destination, tag: Hashable, selection: Binding<Hashable?>, label: () -> Label)`.
+
+Let's break this down a bit before implementing it.
+
+- `destination`: the `View` to present when the link is selected
+- `tag`: a value that is of type `Hashable` to distinguish between which link is selected
+    - To read more about Hashable [click here](https://developer.apple.com/documentation/swift/hashable). The link will take you to Apple's documentation about Hashable.
+- `selection`: a variable that is an optional `Hashable` type that will change values to the tag
+- `label`: a closure that returns a `View` which is what the user will see and be able to click on.
+
+Now that all the parts are explained, let's actually implement the `NavigationLink`.
+
+```swift
+List(1 ..< 5) { item in
+    NavigationLink(destination: Text("Destination \(item)"), tag: item, selection: self.$selectedView) {
+        Text("Navigation Link \(item)")
+    }
+}
+```
+
+Once it's implemented, you should get an error that says `Use of unresolved identifier '$selectedView'`. This error is expected since we do not have a Binding variable called `selectedView` in our code. Let's add it to the `ContentView` struct.
+
+Place `@State private var selectedView: Int? = 0` before declaring `body`. The error should go away now. When declaring `selectedView` they type needs to be an optional since `NavigationLink` wants an optional Hashable type.
+
+As of right now, running the app, it will look like no default view is given. This is because there is no `NavigationLink` with a tag of 0.
+
+![no default](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/Simulator-1.png?raw=true)
+
+If you change the initial value of `selectedView` to 1, then it will open to the destination of `NavigationLink` that has a tag of 1.
+
+![GIF of opening a default view](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/Simulator-2.png?raw=true)
+
+# FINISHED
+
+Now the basic tutorial is finished of how to achieve this, but I'm going to continue in the next section on how to improve the UX because on iOS this is not great behavior, but on iPadOS when in landscape, this behavior is great!
