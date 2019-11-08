@@ -10,8 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        List(0 ..< 5) { item in
-            Text("Hello, World!")
+        NavigationView{
+            List(1 ..< 5) { item in
+                Text("Navigation Link \(item)")
+            }
         }
     }
 }
