@@ -4,7 +4,7 @@ This repo is collection of [SwiftUI](https://developer.apple.com/xcode/swiftui/)
 
 | Post Title | Published Date | Published Post Link | Folder Link |
 | --- | --- | --- | --- |
-| Default Navigation in NavigationView | N/A | 
+| Default Navigation in NavigationView | N/A | N/A | [GitHub](https://github.com/maeganjwilson/swiftui-examples/tree/master/NavigationExample) |
 
 ---
 
