@@ -22,7 +22,7 @@ A fresh `ContentView.swift` looks like this:
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+        var body: some View {
         Text("Hello, World!")
     }
 }
@@ -34,7 +34,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 ```
 
-In order to add a NavigationView that looks like a list, we first need to embed the Text in a list. This can be done by `CMD + Click` on `Text` and choosing Embed in List from the menu. 
+To add a NavigationView that looks like a list, we first need to embed the `Text` in a `List`. Embedding in a `List` can be done by `CMD + Click` on `Text` and choosing Embed in List from the menu. 
 
 ![GIF Showing the `CMD + Click`](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/embed-list.gif?raw=true)
 
@@ -76,7 +76,7 @@ If using the Live Preview in Xcode, then the preview should look like the pictur
 
 ![NavigationView of Hello World!](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/NavigationView-1.png?raw=true)
 
-Let's also make the list look different on each row. Change the string in the text to say "Navigation Link \(item)" and make the list range 1 to 5 instead of 0 to 5.
+Let's also make the list different on each row. Change the string in the text to say "Navigation Link \(item)" and make the list range 1 to 5 instead of 0 to 5.
 
 This is what the code should look like.
 
@@ -102,7 +102,7 @@ Let's break this down a bit before implementing it.
 - `selection`: a variable that is an optional `Hashable` type that will change values to the tag
 - `label`: a closure that returns a `View` which is what the user will see and be able to click on.
 
-Now that all the parts are explained, let's actually implement the `NavigationLink`.
+Now that all the parts are explained let's implement the `NavigationLink`.
 
 ```swift
 List(1 ..< 5) { item in
@@ -114,7 +114,7 @@ List(1 ..< 5) { item in
 
 Once it's implemented, you should get an error that says `Use of unresolved identifier '$selectedView'`. This error is expected since we do not have a Binding variable called `selectedView` in our code. Let's add it to the `ContentView` struct.
 
-Place `@State private var selectedView: Int? = 0` before declaring `body`. The error should go away now. When declaring `selectedView` they type needs to be an optional since `NavigationLink` wants an optional Hashable type.
+Place `@State private var selectedView: Int? = 0` before declaring `body`. The error should go away now. When declaring `selectedView`, the type needs to be optional since `NavigationLink` wants an optional Hashable type.
 
 As of right now, running the app, it will look like no default view is given. This is because there is no `NavigationLink` with a tag of 0. If `selectedView` is assigned a tag that doesn't exist, then the view will be the list of NavigationLinks.
 
@@ -126,7 +126,7 @@ If you change the initial value of `selectedView` to 1, then it will open to the
 
 # Basics are done!
 
-Now the basic tutorial is finished of how to achieve this, but I'm going to continue in the next section on how to improve the UX because on iOS this is not great behavior, but on iPadOS when in landscape, this behavior is great!
+Now the basic tutorial is finished of how to achieve this. I'm going to continue in the next section on how to improve the UX because on iOS this is not excellent behavior, but on iPadOS when in landscape, this behavior is excellent!
 
 # Bettering the UX
 
@@ -162,6 +162,14 @@ Now, we need to do something based on each device. We can get the device type by
 ```
 
 That would be it! The view will change on device and orientation.
+
+Here's a gif of the iPad:
+
+![GIF of iPad](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/ipad-finished.gif?raw=true)
+
+Here's a gif of the iPhone's implementation:
+
+![GIF of iPad](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/iphone-finished.gif?raw=true)
 
 ---
 
