@@ -18,6 +18,15 @@ struct ContentView: View {
                     Text("Navigation Link \(item)")
                 }
             }
+            .onAppear{
+                let device = UIDevice.current
+                if device.model == "iPad" && device.orientation.isLandscape{
+                    self.selectedView = 1
+                } else {
+                    self.selectedView = 0
+                }
+            }
+
         }
     }
 }

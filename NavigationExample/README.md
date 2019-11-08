@@ -116,14 +116,55 @@ Once it's implemented, you should get an error that says `Use of unresolved iden
 
 Place `@State private var selectedView: Int? = 0` before declaring `body`. The error should go away now. When declaring `selectedView` they type needs to be an optional since `NavigationLink` wants an optional Hashable type.
 
-As of right now, running the app, it will look like no default view is given. This is because there is no `NavigationLink` with a tag of 0.
+As of right now, running the app, it will look like no default view is given. This is because there is no `NavigationLink` with a tag of 0. If `selectedView` is assigned a tag that doesn't exist, then the view will be the list of NavigationLinks.
 
 ![no default](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/Simulator-1.png?raw=true)
 
 If you change the initial value of `selectedView` to 1, then it will open to the destination of `NavigationLink` that has a tag of 1.
 
-![GIF of opening a default view](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/Simulator-2.png?raw=true)
+![GIF of opening a default view](https://github.com/maeganjwilson/swiftui-examples/blob/master/NavigationExample/post-resources/Simulator-2.gif?raw=true)
 
-# FINISHED
+# Basics are done!
 
 Now the basic tutorial is finished of how to achieve this, but I'm going to continue in the next section on how to improve the UX because on iOS this is not great behavior, but on iPadOS when in landscape, this behavior is great!
+
+# Bettering the UX
+
+On iPhones, you don't usually want the total view to be taken over. You usually want the user to decide where to navigate. On iPads in landscape, the screen is so big that having a view selected is okay since the navigation links are always shown. This can be achieved by using `onAppear()` and figuring out which device is being used.
+
+First, we need to add `onAppear()` to the `List`. Then, we need to get the device type.
+
+```swift
+NavigationView{
+    List(1 ..< 5) { item in
+        NavigationLink(destination: Text("Destination \(item)"), tag: item, selection: self.$selectedView) {
+            Text("Navigation Link \(item)")
+        }
+    }
+    // this is the part to add
+    .onAppear{
+        let device = UIDevice.current
+    }
+}
+```
+
+Now, we need to do something based on each device. We can get the device type by using `.model`. We can then use a simple if statement to determine if it's an iPhone or an iPad and set the selection based on that. We also need to check the orientation of the iPad.
+
+```swift
+.onAppear{
+    let device = UIDevice.current
+    if device.model == "iPad" && device.orientation.isLandscape{
+        self.selectedView = 1
+    } else {
+        self.selectedView = 0
+    }
+}
+```
+
+That would be it! The view will change on device and orientation.
+
+---
+
+If you enjoy my posts, please consider subscribing to my [Patreon](https://www.patreon.com/maeganwilson_) and checking out my other posts!
+
+If you don't like having more subscriptions, consider buying me a coffee instead by clicking the image below! <a href="https://www.buymeacoffee.com/appsbymw" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
