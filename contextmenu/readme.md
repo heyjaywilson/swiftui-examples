@@ -13,15 +13,71 @@ This guide is going to explain how to add a Context Menu to a view in SwiftUI.
 
 A context menu is a collection of buttons that can trigger an action. Usually a context menu is triggered by long pressing on an item on screen in iOS/iPadOS or right-clicking in macOS. It can be used for secondary actions on a button or item.
 
-// add image here
+![Example of Context Menu in iOS](https://github.com/maeganjwilson/swiftui-examples/blob/master/contextmenu/images/example-1.png?raw=true)
+
+The picture above is an example of a context menu in my iOS app, [iHog](https://ihogapp.com/).
+
 
 # How to add a context menu?
 
 To add a context menu, we are going to be using the `contextMenu()` modifier and passing it `Button()`s to display.
 
+Here's a basic SwiftUI view with a Text view that has the font color set to red.
+
 ```swift
-// add code example here
+import SwiftUI
+
+struct ContentView: View {
+
+  @State private var fontColor = Color.black
+
+  var body: some View {
+    Text("Long press here to show a context menu")
+    .foregroundColor(fontColor)
+  }
+}
 ```
+
+I made the font color a variable so that we can change it with the context menu.
+
+
+To add a context menu to the `Text()`, add the modifier `contextMenu()` like below.
+
+```swift
+struct ContentView: View {
+  
+  @State private var fontColor = Color.black
+  
+  var body: some View {
+    Text("Long press here to show a context menu")
+      .foregroundColor(fontColor)
+      .contextMenu()
+  }
+}
+```
+
+This will produce the error `Type of expression is ambiguous without more context` since there are no buttons inside the `ContextMenu`. Let's add a button to change the font color.
+
+```swift
+      .contextMenu {
+        Button(action:{
+          self.fontColor = Color.blue
+        }){
+          Text("Set color to blue")
+        }
+        Button(action:{
+          self.fontColor = Color.red
+        }){
+          Text("Set color to red")
+        }
+    }
+```
+
+By adding the two buttons, we now are able to long press on the text and change the color, as you can see in the GIF below.
+
+![Gif showing the long press](https://github.com/maeganjwilson/swiftui-examples/blob/master/contextmenu/images/example-2.gif?raw=true)
+
+
 
 ---
 
