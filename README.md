@@ -8,6 +8,10 @@ This repo is collection of [SwiftUI](https://developer.apple.com/xcode/swiftui/)
 
 ---
 
-If you enjoy my posts, please consider subscribing to my [Patreon](https://www.patreon.com/maeganwilson_) and checking out my other posts!
+If you enjoy my posts, streams, and apps, consider encouraging by efforts.
 
-If you don't like having more subscriptions, consider buying me a coffee instead by clicking the image below! <a href="https://www.buymeacoffee.com/appsbymw" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+<a href="https://www.buymeacoffee.com/appsbymw" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/arial-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
+
+Or
+
+[![](https://github.com/maeganjwilson/appsbymwblog/blob/master/static/images/patron.png?raw=true)](https://www.patreon.com/appsbymw)
