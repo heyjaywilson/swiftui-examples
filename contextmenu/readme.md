@@ -29,12 +29,11 @@ import SwiftUI
 
 struct ContentView: View {
 
- @State private var fontColor = Color.black
-
- var body: some View {
- Text("Long press here to show a context menu")
- .foregroundColor(fontColor)
- }
+  @State private var fontColor = Color.black
+  var body: some View {
+    Text("Long press here to show a context menu")
+      .foregroundColor(fontColor)
+  }
 }
 ```
 
@@ -46,13 +45,13 @@ To add a context menu to the `Text()`, add the modifier `contextMenu()` like bel
 ```swift
 struct ContentView: View {
  
- @State private var fontColor = Color.black
- 
- var body: some View {
- Text("Long press here to show a context menu")
- .foregroundColor(fontColor)
- .contextMenu()
- }
+  @State private var fontColor = Color.black
+  
+  var body: some View {
+    Text("Long press here to show a context menu")
+      .foregroundColor(fontColor)
+      .contextMenu()
+  }
 }
 ```
 
@@ -60,16 +59,16 @@ This will produce the error `Type of expression is ambiguous without more contex
 
 ```swift
 .contextMenu {
- Button(action:{
- self.fontColor = Color.blue
- }){
- Text("Set color to blue")
- }
- Button(action:{
- self.fontColor = Color.red
- }){
- Text("Set color to red")
- }
+  Button(action:{
+    self.fontColor = Color.blue
+  }){
+    Text("Set color to blue")
+  }
+  Button(action:{
+    self.fontColor = Color.red
+  }){
+    Text("Set color to red")
+  }
 }
 ```
 
@@ -81,22 +80,22 @@ In the first picture, the menu contains icons. These can be added into the `Butt
 
 ```swift
 .contextMenu {
- Button(action:{
- self.fontColor = Color.blue
- }){
- HStack {
- Image(systemName: "pencil.tip.crop.circle")
- Text("Set color to blue")
- }
- }
- Button(action:{
- self.fontColor = Color.red
- }){
- HStack {
- Image(systemName: "pencil.tip.crop.circle")
- Text("Set color to red")
- }
- }
+  Button(action:{
+    self.fontColor = Color.blue
+  }){
+    HStack {
+      Image(systemName: "pencil.tip.crop.circle")
+      Text("Set color to blue")
+    }
+  }
+  Button(action:{
+    self.fontColor = Color.red
+  }){
+    HStack {
+      Image(systemName: "pencil.tip.crop.circle")
+      Text("Set color to red")
+    }
+  }
 }
 
 ```
