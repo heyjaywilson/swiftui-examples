@@ -59,24 +59,51 @@ struct ContentView: View {
 This will produce the error `Type of expression is ambiguous without more context` since there are no buttons inside the `ContextMenu`. Let's add a button to change the font color.
 
 ```swift
-      .contextMenu {
-        Button(action:{
-          self.fontColor = Color.blue
-        }){
-          Text("Set color to blue")
-        }
-        Button(action:{
-          self.fontColor = Color.red
-        }){
-          Text("Set color to red")
-        }
-    }
+.contextMenu {
+  Button(action:{
+    self.fontColor = Color.blue
+  }){
+    Text("Set color to blue")
+  }
+  Button(action:{
+    self.fontColor = Color.red
+  }){
+    Text("Set color to red")
+  }
+}
 ```
 
 By adding the two buttons, we now are able to long press on the text and change the color, as you can see in the GIF below.
 
 ![Gif showing the long press](https://github.com/maeganjwilson/swiftui-examples/blob/master/contextmenu/images/example-2.gif?raw=true)
 
+In the first picture, the menu contains icons. These can be added into the `Button()` by wrapping an `HStack` around the Text and the image. Now, let's do that. 
+
+```swift
+.contextMenu {
+  Button(action:{
+    self.fontColor = Color.blue
+  }){
+    HStack {
+      Image(systemName: "pencil.tip.crop.circle")
+      Text("Set color to blue")
+    }
+  }
+  Button(action:{
+    self.fontColor = Color.red
+  }){
+    HStack {
+      Image(systemName: "pencil.tip.crop.circle")
+      Text("Set color to red")
+    }
+  }
+}
+
+```
+
+![Picture showing the icons](https://github.com/maeganjwilson/swiftui-examples/blob/master/contextmenu/images/example-3.png?raw=true)
+
+Icons are provided by Apple in [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/).
 
 
 ---
