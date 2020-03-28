@@ -14,6 +14,6 @@ All posts are on my [Medium.com profile](https://medium.com/@maeganwilson_). I'd
 
 If you enjoy my posts, streams, and apps, consider encouraging my efforts.
 
-[![](https://github.com/maeganjwilson/appsbymwblog/blob/master/static/images/patron.png?raw=true)](https://www.patreon.com/appsbymw) Becoming a Patron will also give you links to read all the posts without a paywall on Medium.com.
+[![](https://github.com/maeganjwilson/appsbymwblog/blob/master/static/images/patron.png?raw=true)](https://www.patreon.com/appsbymw)
 
 <a href="https://www.buymeacoffee.com/appsbymw" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/arial-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
