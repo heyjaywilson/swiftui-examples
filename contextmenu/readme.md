@@ -9,6 +9,10 @@ tags: SwiftUI, swift
 
 This guide is going to explain how to add a Context Menu to a view in SwiftUI.
 
+An example repo can be found here
+
+{% github maeganjwilson/context-menu-example %}
+
 # What is a context menu?
 
 A context menu is a collection of buttons that can trigger an action. Usually, a context menu is triggered by long pressing on an item on screen in iOS/iPadOS or right-clicking in macOS. It can be used for subsequent actions on a button or item.
